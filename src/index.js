@@ -42,7 +42,7 @@ const merge = (...mergeOptions) => {
     mergeOptions.length < 1 ||
     mergeOptions.some((item) => !isArray(item) && !isObject(item))
   ) {
-    throw new Error('The parameter must be an object or an array test')
+    throw new Error('The parameter must be an object or an array')
   }
 
   let mergeTarget = []
