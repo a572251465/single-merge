@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-const merge = require('src/index')
+const merge = require('../src/index')
 
 // const a = { name: 'lihh', age: 20 }
 // const b = { name1: 'lihh', age1: 40 }
@@ -40,4 +40,4 @@ const b3 = {
     }
   }
 }
-merge([a3, b3])
+JSON.stringify(merge(a3, b3))

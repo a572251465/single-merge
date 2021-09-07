@@ -6,7 +6,6 @@ const isType = (type) => {
   }
 }
 
-// ----test1
 const isArray = isType('Array')
 const isObject = isType('Object')
 
@@ -17,7 +16,7 @@ const arrayHandle = (source, target) => {
   return [].concat(source, target)
 }
 
-const mergeOptions = (source, target, arrayCover = true) => {
+const mergeOptionsHandle = (source, target, arrayCover = true) => {
   const keys = Object.keys(target)
   let i = 0
   for (; i < keys.length; i += 1) {
@@ -27,7 +26,7 @@ const mergeOptions = (source, target, arrayCover = true) => {
       if (!isObject(source[index])) {
         source[index] = {}
       }
-      mergeOptions(source[index], item, arrayCover)
+      mergeOptionsHandle(source[index], item, arrayCover)
     } else {
       if (isArray(item) && !arrayCover) {
         source[index] = arrayHandle(source[keys[i]], item)
@@ -38,15 +37,33 @@ const mergeOptions = (source, target, arrayCover = true) => {
   }
 }
 
-const merge = (mergeTarget = [], options = {}) => {
-  if (!isArray(mergeTarget)) return mergeTarget
+const merge = (...mergeOptions) => {
+  if (
+    mergeOptions.length < 1 ||
+    mergeOptions.some((item) => !isArray(item) && !isObject(item))
+  ) {
+    throw new Error('The parameter must be an object or an array')
+  }
+
+  let mergeTarget = []
+  let options = { arrayCover: true }
+  if (isArray(mergeOptions[0])) {
+    // eslint-disable-next-line prefer-destructuring
+    mergeTarget = mergeOptions[0]
+    if (isObject(mergeOptions[1])) {
+      // eslint-disable-next-line prefer-destructuring
+      options = mergeOptions[1]
+    }
+  } else {
+    mergeTarget = mergeOptions
+  }
   const { arrayCover = true } = options
   const mergeData = mergeTarget.filter((item) => isObject(item))
   const result = {}
   let i = 0
   for (; i < mergeData.length; i += 1) {
     const item = mergeData[i]
-    mergeOptions(result, item, arrayCover)
+    mergeOptionsHandle(result, item, arrayCover)
   }
 
   return result
