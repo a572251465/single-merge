@@ -6,6 +6,7 @@ const isType = (type) => {
   }
 }
 
+// ----test1
 const isArray = isType('Array')
 const isObject = isType('Object')
 
