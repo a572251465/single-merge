@@ -23,7 +23,7 @@ const a3 = {
     address: '1111',
     lineStyle: {
       width: 10,
-      // arr: [5, 6],
+      arr: [5, 6],
       color: [[1, '#ccc']]
     }
   }
@@ -35,9 +35,9 @@ const b3 = {
   school: {
     name: '哈哈1',
     lineStyle: {
-      arr: [7, 8],
+      arr: [7, 6],
       color: [[1, 'red']]
     }
   }
 }
-JSON.stringify(merge(a3, b3))
+JSON.stringify(merge([a3, b3], { arrayCover: false }))

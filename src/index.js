@@ -13,7 +13,7 @@ const arrayHandle = (source, target) => {
   if (!isArray(source)) {
     return target
   }
-  return [].concat(source, target)
+  return [...new Set([].concat(source, target))]
 }
 
 const mergeOptionsHandle = (source, target, arrayCover = true) => {
