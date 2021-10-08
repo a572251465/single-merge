@@ -40,4 +40,25 @@ const b3 = {
     }
   }
 }
-JSON.stringify(merge([a3, b3], { arrayCover: false }))
+// JSON.stringify(merge([a3, b3], { arrayCover: false }))
+
+const d1 = {
+  name: 'lihh',
+  school: {
+    name: 'lihh1',
+    width: 20,
+    height: 20,
+    lineStyle: {
+      border: 1
+    }
+  }
+}
+
+const d2 = {
+  age: 10,
+  school: {
+    width: 30
+  }
+}
+
+console.log(merge(d1, d2))
