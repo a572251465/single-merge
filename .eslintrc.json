@@ -5,6 +5,7 @@
   ],
   "rules": {
     "no-param-reassign": "off",
-    "no-lonely-if": "off"
+    "no-lonely-if": "off",
+    "no-console": "off"
   }
 }

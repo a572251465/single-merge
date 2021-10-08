@@ -40,7 +40,7 @@ const b3 = {
     }
   }
 }
-// JSON.stringify(merge([a3, b3], { arrayCover: false }))
+JSON.stringify(merge([a3, b3], { arrayCover: false }))
 
 const d1 = {
   name: 'lihh',
@@ -61,4 +61,4 @@ const d2 = {
   }
 }
 
-console.log(merge(d1, d2))
+JSON.stringify(console.log(merge(d1, d2)))
